@@ -88,7 +88,8 @@ class Seq2Tensor(nn.Module):
         return code.transpose(0, 1)
 
 def reverse_complement(seq, mapping={"A": "T", "G":"C", "T":"A", "C": "G", 'N': 'N'}):
-    s = "".join(mapping[s] for s in reversed(seq))
+    u_seq = [s.upper() for s in seq]
+    s = "".join(mapping[s] for s in reversed(u_seq))
     return s
 
 def encode_seq(seq: str):
